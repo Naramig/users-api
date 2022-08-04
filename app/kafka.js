@@ -1,6 +1,6 @@
 const { Kafka } = require("kafkajs");
 
-exports.producer = null;
+let producer;
 
 exports.init = async () => {
     try {
@@ -10,17 +10,29 @@ exports.init = async () => {
             "ssl": false
         })
 
-        exports.producer = kafka.producer();
+        producer = kafka.producer();
         console.log("Connection...")
-        await exports.producer.connect()
+        await producer.connect()
         console.log("connected")
     } catch (e) {
         console.log("Error", e);
     }
 }
 
+exports.sendMsg = async (data) => {
+    const result = await producer.send({
+        "topic": "Users",
+        "messages": [
+            {
+                "value": data,
+            }
+        ]
+    })
+    console.log("Done!", result)
+}
+
 exports.close = async () => {
-    if (exports.producer){
-        await exports.producer.disconnect();
+    if (producer){
+        await producer.disconnect();
     }
 }

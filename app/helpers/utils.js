@@ -24,15 +24,7 @@ exports.authenticateToken = (req, res, next) => {
 
 exports.sendEmail = async (email, name) => {
     const msg = prepareMsg(name);
-    const result = await kafka.producer.send({
-        "topic": "Users",
-        "messages": [
-            {
-                "value": JSON.stringify({msg, email}),
-            }
-        ]
-    })
-    console.log("Done!", result)
+    await kafka.sendMsg(JSON.stringify({msg, email}))
 }
 
 exports.generateAccessToken = (user) => {
