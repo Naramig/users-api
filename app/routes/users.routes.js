@@ -6,20 +6,20 @@ module.exports = app => {
     const router = require("express").Router();
 
     //get all users by admins
-    router.get("/", authenticateToken, users.getAllUsers);
+    router.get("/users/", authenticateToken, users.getAllUsers);
     //get user by id by admins
-    router.get("/:id", authenticateToken, users.getUser);
+    router.get("/users/:id", authenticateToken, users.getUser);
     //create new user by admins
-    router.post("/", authenticateToken, users.createUser);
+    router.post("/users/", authenticateToken, users.createUser);
     //update user by admins
-    router.put("/:id", authenticateToken, users.updateUserById);
+    router.put("/users/:id", authenticateToken, users.updateUserById);
     //delete user by admins
-    router.delete("/:id", authenticateToken, users.deleteUserById);
+    router.delete("/users/:id", authenticateToken, users.deleteUserById);
 
     //delete user by user
-    router.delete("/", authenticateToken, users.deleteUser);
+    router.delete("/users/", authenticateToken, users.deleteUser);
     //update user by user
-    router.put("/", authenticateToken, users.updateUser);
+    router.put("/users/", authenticateToken, users.updateUser);
 
-    app.use('/users/', router);
+    // app.use('/users/', router); // TODO configure swagger-autogen to see this
 };
