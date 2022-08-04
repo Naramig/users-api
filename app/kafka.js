@@ -7,7 +7,8 @@ exports.init = async () => {
         const kafka = new Kafka({
             "clientId": "myapp",
             "brokers": [process.env.KAFKA_URL],
-            "ssl": false
+            "ssl": false,
+            "waitForLeaders": true,
         })
 
         producer = kafka.producer();
