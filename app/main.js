@@ -21,10 +21,14 @@ function checkEnv() {
 exports.init = async function () {
     return new Promise((resolve, reject) => {
         try {
-
-            db.sequelize.sync();
-            baseInsert()
+            // check that all ENV exist
             checkEnv()
+
+            //sync DB
+            db.sequelize.sync();
+
+            //Insert admin user
+            baseInsert()
 
             app.get('/ping', (req, res) => {
                 res.send('pong')

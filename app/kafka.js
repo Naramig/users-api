@@ -5,7 +5,7 @@ let producer;
 exports.init = async () => {
     try {
         const kafka = new Kafka({
-            "clientId": "myapp",
+            "clientId": process.env.KAFKA_CLIENT_ID,
             "brokers": [process.env.KAFKA_URL],
             "ssl": false,
             "waitForLeaders": true,
@@ -22,7 +22,7 @@ exports.init = async () => {
 
 exports.sendMsg = async (data) => {
     const result = await producer.send({
-        "topic": "Users",
+        "topic": process.env.KAFKA_TOPIC,
         "messages": [
             {
                 "value": data,
