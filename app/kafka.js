@@ -6,7 +6,7 @@ exports.init = async () => {
     try {
         const kafka = new Kafka({
             "clientId": "myapp",
-            "brokers": ["localhost:9092"]
+            "brokers": [process.env.KAFKA_URL]
         })
 
         exports.producer = kafka.producer();
