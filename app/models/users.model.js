@@ -100,8 +100,10 @@ exports.updateUser = async (id, user, result) => {
             result({message: "User not found", code: 404}, null);
             return;
         }
-        user.password = await hashData(user.password);
-        await st.updateUserData(user)
+        if (user.password) {
+            user.password = await hashData(user.password);
+        }
+        await st.updateUserData(id, user)
         result(null, {success: true});
     } catch (e) {
         result({message: e}, null);

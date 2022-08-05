@@ -30,7 +30,7 @@ exports.createNewUser = async (user) => {
 }
 
 exports.getAllUsers = async () => {
-    return await Users.findAll()
+    return await Users.findAll({attributes: ['username', 'id', 'email', 'isAdmin']})
 }
 
 exports.getUser = async (id) => {
