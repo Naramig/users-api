@@ -131,11 +131,6 @@ exports.createUser = async (req, res) => {
         });
     }
 
-    if (!req.params) {
-        res.status(400).send({
-            message: "Content can not be empty!"
-        });
-    }
 
     const user = {
         username: req.body.username,
@@ -165,6 +160,12 @@ exports.updateUserById = async (req, res) => {
     if (!req.user.isAdmin) return res.sendStatus(403)
 
     if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+    }
+
+    if (!req.params) {
         res.status(400).send({
             message: "Content can not be empty!"
         });

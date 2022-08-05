@@ -1,5 +1,5 @@
 const api = require("./app/main");
-const kafka = require("./app/kafka")
+const kafka = require("./app/kafka");
 
 process.on("uncaughtException", cleanup);
 process.on("SIGINT", cleanup);

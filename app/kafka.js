@@ -29,7 +29,7 @@ exports.sendMsg = async (data) => {
             }
         ]
     })
-    console.log("Done!", result)
+    console.log("Done", result)
 }
 
 exports.close = async () => {
