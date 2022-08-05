@@ -17,6 +17,14 @@
 * KAFKA_URL - address of Kafka brokers
 * KAFKA_CLIENT_ID - client id
 * KAFKA_TOPIC - topic
+<br>
+
+### Optional configs:
+* ADMIN_USERNAME - username of the admin (default "admin")
+* ADMIN_PASSWORD - password of the admin (default "password")
+* ADMIN_EMAIL - email of the admin (default "email")
+
+<br>
 ## Local run
 ### Running with CLI:
 ```$ npm start```<br>
